@@ -2,6 +2,7 @@ import { useRef, useCallback } from 'react';
 import { DndProvider, useDrag, useDrop, DropTargetMonitor } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { XYCoord } from 'dnd-core';
+import { DragIndicator } from '@material-ui/icons';
 
 type Props = {
   columns: ItemType[];
@@ -130,15 +131,20 @@ const Item: React.FC<ItemProps> = ({ item, index, moveCard }) => {
         style={{
           width: '12px',
           height: '100%',
-          background: 'lightgrey',
           position: 'absolute',
           right: 5,
           top: 0,
           cursor: 'grab',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          overflow: 'hidden',
         }}
         ref={drag}
         data-handler-id={handlerId}
-      />
+      >
+        <DragIndicator />
+      </div>
     </div>
   );
 };
